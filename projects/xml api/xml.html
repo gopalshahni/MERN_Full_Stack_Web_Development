@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #image{
+            height: 200px;
+            width: 200px;
+        }
+        .project{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<!--  
+        Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete. -->
+    <div class="project"></div>
+    <h1>press button to see hitesh sir profile</h1>
+    <button>Show</button>
+</body>
+<script>
+
+//     XMLHttpRequest()
+// The constructor initializes an XMLHttpRequest. It must be called before any other method calls
+//  refer here to learn more : https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+
+//  // before we start 
+//  we need to call constructor XMLHttpRequest()
+//  after that we can use instance properties 
+//  like = XMLHttpRequest.readyState() ,, returns a number representing the state of the request 
+//  // Here we start 
+
+const xml = new XMLHttpRequest(); // this is just a class add new keyword to make it object
+const url = 'https://api.github.com/users/hiteshchoudhary'
+let  profile;
+let show = document.querySelector('button');
+let card = document.querySelector('.project');
+    show.addEventListener('click',renderCard)
+
+
+    function renderCard(){
+    xml.open('GET',url)
+    xml.onreadystatechange = function(){console.log(xml.readyState)// readystate will show the number of state 1,2,3,4;
+    if(xml.readyState === 4){
+        profile = JSON.parse(xml.responseText);
+        console.log(profile)
+        console.log(profile.followers)
+         } 
+         
+     
+        card.innerHTML = `
+        <div class  = "card">
+            <img id = "image" src ="${profile.avatar_url}">
+            <h1>followers ${profile.followers}</h1>
+            </div>
+        `;
+    }
+    
+    xml.send() // this will send actual data
+}
+</script>
+</html>
