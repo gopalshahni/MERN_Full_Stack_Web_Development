@@ -1,0 +1,21 @@
+
+// blocking code/ synchronus code and non blocking code/ asynchrounus code 
+
+// // blocking code menas it will stop the code until each line is not executed line by line 
+// for ex : aapko db se data fetch krna hai tab tak aap aur kuch nhi kr skte , kya pta DB ko kitna time lag jaye aane ke ByteLengthQueuingStrategy
+
+// // non blocking code means do your other work and at the same time other process is also going on 
+// for ex: same db wala example , aap apne kuch task krlo sath main jb tk ham DB se data mangwa lete hai 
+
+
+// // but what if hamme db se data mangwane ke baad user ko success show krana hai , but db toh abhi data laa rha hai toh usse phele "success" show kra diya toh it's not a good thing 
+
+// SUMMARY : both approach are good in their use case scenario
+
+
+
+// What actually happens on the backend is 
+
+// JS ENGINE [ MEMORY HEAP + CALL STACK ]
+
+// Js Engine -->WEB API/NODE API (DOM API , SET INTERVAL , SET TIMEOUT , FETCH()) ----> REGISTER THE CALL BACK ---> IT WILL GO TO TASK QUEUE / TOP PRIORTY QUEUE( IT IS USED FOR FETCH CALLS )---->   THEN IT WILL GO BACK TO JS ENGINE[CALL STACK] TO EXECUTE THE TASK OR TO GIVE OUTPUT 

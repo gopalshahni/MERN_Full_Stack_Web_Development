@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style ="background-color: black; color: white; display: flex; justify-content: center; align-items: center;">
+    <div class="black"><h1>Dom Learning on Chai aur Code </h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo voluptate aspernatur aliquam repudiandae et reprehenderit vitae pariatur accusantium earum, vel deserunt porro, velit possimus eligendi fuga optio! Facilis, perferendis blanditiis!</p></div>
+</body>
+<script>
+let a =document.querySelector('.black');
+
+a.style.backgroundColor = "green";
+a.style.color = "black";
+let para = document.querySelector("p");
+para.style.backgroundColor = "lightblue";
+</script>
+<!--
+getElementsByClassname returns HTML elemts a similar of array. we have to convert it into array to run operation on each element of class 
+
+
+ ex: Array.from('enter your html elements variable or reference')
+
+
+// difference between innertext, innerHTML adn innerContent
+// innertext will only show text , if and hidden text is there it will be not showed.
+// innerHTML will give text+ innercode if there is a nested code.
+//innerContent will give proper text wthere it is hidden or not.
+
+// Class access in js ,
+// well class is known as =ClassName()
+// ex: documnet.getElementsByClassName() ,, it will give HTMLcollection. 
+
+// query selector in js
+// ex : document.querySelector('h1');, it give only first element 
+
+// query selector for all elements just enter querySelectorAll(), 
+
+// Note: learn porperly CSS selectors to pass in the querySelector 
+
+// htmlelements are not array 
+// we need to convert html elements into array
+
+ ex: Array.from('enter your html elements variable or reference')
+--></html>

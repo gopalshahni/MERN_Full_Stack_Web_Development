@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let div = document.createElement('div')//create element for web page 
+    div.className = 'first'
+    console.log(div)
+    div.innerText = "hello world"
+    div.style.backgroundColor = "black";
+    div.style.color = "white";
+    div.innerHTML = "<h1>hello</h1>"
+    document.body.appendChild(div)// add element to the web page 
+</script>
+</html>
+
+!-- 
+CRUD IN DOM
+1. for ex add text = innerHTMl  , this will traverse whole tree in the DOM,which will not create more issue in small projects , but it will make issue in large projects so here is second approach.
+
+2.createTextNode , basically use node because they directly choose the element and then add it will reduce the time and we also another example of it  
+
+replacewith() // update 
+
+other method is outerHTML = "" // edit  
+
+and for removing the element we have remove().
+
+--!

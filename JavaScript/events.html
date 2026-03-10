@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // events listner  appraoches
+    // 1. inline or embeded events listener in html 
+    // example <h1 onclick = 'hello'> HI</h1> ,, this is bad approach
+    // 2. in js without propagation ability.
+    //example  document.getElementById('#Owl').onclick = function(){ alert('Hi , this is a image of owl')},, this is also not that good 
+    // 3. by addeventlistener 
+    // document.getElementById('owl').addEventListener ('click',function (){  alert ('ownl is clicked')})
+
+    // note: we use addEventListener because on browser there are multiple type of events so we can listen  and apply at same time , but in onclick case it only alow one event or function if new event is added the new one will override the previous function only one function could be executed
+     // attachEvent(), anothe example in addEventListener
+     //
+
+
+//      ------Events two types majorly --------
+//      1. browser Events These are events triggered by the browser itself or user interaction with the page.
+//      window.addEventListener('load', () => {
+//   console.log('Page fully loaded');
+// });
+
+// window.addEventListener('resize', () => {
+//   console.log('Window resized');
+// });
+// document.addEventListener('DOMContentLoaded', () => {
+//   console.log('DOM ready');
+// });
+
+//      2. envirnment Events These are events triggered by the runtime environment (like Node.js or the browser environment itself), not just user actions.
+// Network events (e.g., online, offline): 
+//      window.addEventListener('online', () => {
+//   console.log('You are back online!');
+// });
+
+// window.addEventListener('offline', () => {
+//   console.log('You lost internet connection!');
+// });
+ 
+// Storage events (when localStorage changes in another tab):
+// window.addEventListener('storage', (event) => {
+//   console.log('Storage changed:', event);
+// });
+// document.getElementById('owl'.addEventListener('click',function(e){
+//     console.log(e);
+// }),false) // this by default false 
+
+// Home Work : type, timestamp, defaultPrevented 
+// target , toElement , srcElement, currentTarget
+// clientX, clientY, screenX, screenY
+//altKey, ctrlkey, shiftkey, keyCode
+
+
+
+// ----------- Event Propagation ---------------
+
+// bubbling  & capturing in event propogation
+// so bubbling means bottom to top approach is used , by default this is used in js and production environment  
+
+// In capturing we use top to bottom approach , lets understand this through a example
+
+// Scenarion You setted a onlick on the image gallery div and you also set onlick on one image of image gallery so,
+
+// In bubbling we pass third  paramater false (basically this by Default ) in addEventListener, 
+//  addEventListener('click',() => {some work},false)
+// Output: single image clicked
+//         image gallery clicked;
+
+// In capturing we pass true as third parameter in our  addEventListener('click',() => {some work},true)
+
+// Output: image gallery clicked 
+//         single image  clicked
+
+
+// HOw to stop event propagation in function 
+//  addEventListener('click',(e) => {
+//     e.stopPropagation
+//  },false)
+
+// Sometimes you want to stop some events like following links 
+// Example google.com
+    // Document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    // },false)
+
+    document.querySelector('#images').addEventListener('click',function (e) {
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
+            
+             let removeIt = e.target.parentNode
+        removeIt.remove()
+        }
+       
+    })
+
+</script>
+</html>
