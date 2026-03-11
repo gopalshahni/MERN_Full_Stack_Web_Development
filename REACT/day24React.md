@@ -20,9 +20,10 @@ function print(){
         <h1> or (element) <hello_world/>
     )
 }
-
+```
 - but it is not a good practice , so we will just simply use fragrments "<> you can use multiple functions/components  here inside this </>" , Majorly to solve the issue of sending only element at start we use div to send multiple items , but after sometime react introduce <> as fragements and you can send nou multiple items , basically they are divs here is a code example 
 
+``` javascript
 function print(){
     return (
         <>
@@ -31,4 +32,4 @@ function print(){
         <h1> hello </h1>
         </>
     )
-}
+} ```
