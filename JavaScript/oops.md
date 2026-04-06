@@ -18,8 +18,9 @@
 
  ## 4 pillars
 Abstraction
-Encapsulation
-Inheritance Polymorphism
+Encapsulation is decalered by # symbol 
+Inheritance is used by extend key word
+Polymorphism
 
 ## new keyword
 - create new object {} 
@@ -41,3 +42,5 @@ funciton user(username,loginCount,isLoggedIn){
 const userOne = new user('gopal',12,true); // here new keyword is creating new object if we don't add new keyword , the userOne can be update through , if someone try to make userTwo and the userOne vlaue will be updated and that will cause problem in the produciton for developers
 
 console.log('userOne)
+
+# In old time we use __proto__ to access other object property but now we use setprototype to give access to other objects and for getting the prototyep we use getprototyep and to check prototype is available or not we use hasOwnprototype

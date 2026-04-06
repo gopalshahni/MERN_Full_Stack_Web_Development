@@ -82,13 +82,69 @@
 // IIFE is a function that is executed immediately after it is defined. It is a common pattern in JavaScript to create a new scope and avoid polluting the global scope. USECASE EXAMPLE LIKE DB CONNECTION, API CALLS, ETC.
 
 //()();// this is an IIFE, it will execute immediately after it is defined. It is a common pattern in JavaScript to create a new scope and avoid polluting the global scope. USECASE EXAMPLE LIKE DB CONNECTION, API CALLS, ETC.
-(function db() {
-    console.log('db connected');
-}
-)();// named iife 
+// (function db() {
+//     console.log('db connected');
+// }
+// )();// named iife 
 
-// now using arrow function
-( () => {
-    console.log('db connected using arrow function');
+// // now using arrow function
+// ( () => {
+//     console.log('db connected using arrow function');
+// }
+// )()// nameless iife
+
+
+// --------------Asignment from udem while learning function at section 10 v-53 ----------------
+// Q1
+
+// let teadOrder = []
+// function makeTea(typeofTea){
+//     teadOrder.push(typeofTea)
+//     console.log(
+//      `Making ${typeofTea}`)
+// }
+
+// makeTea('chai')
+// console.log(teadOrder);
+
+// Q2
+
+// function orderTeac(teaType){
+//     function confirmOrder(){
+//         return `order confirmed for ${teaType}`
+//     }
+//     return confirmOrder()
+// }
+
+// let order = orderTeac('chai')
+// console.log(order);
+
+// Q3 
+// let calculateTotal = (price,quantity) =>{return price*quantity}
+
+// let order = calculateTotal(200, 2)
+// console.log(order);
+
+// Higher order fucntion  or First class Function 
+// function printName (name){
+//     return name
+// }
+// function greet( fn,value ){
+//  return `HI ${fn ( value)} , How are you?`
+// }
+
+// let call = greet (printName,'gopal')
+
+// console.log(call);
+
+// another example of higher order function
+function tea(teatype){
+    return `making ${teatype}`
 }
-)()// nameless iife
+
+function createTeaMaker (fn , teatype){
+    return fn(teatype)
+}
+
+let teaMaker = createTeaMaker(tea,'chai')
+console.log(teaMaker);
