@@ -1,0 +1,29 @@
+{
+  "name": "project_management",
+  "version": "1.0.0",
+  "description": "project management application in MERN stack",
+  "keywords": [
+    "backend",
+    "API",
+    "creation"
+  ],
+  "homepage": "https://github.com/gopalshahni/MERN_Full_Stack_Web_Development#readme",
+  "bugs": {
+    "url": "https://github.com/gopalshahni/MERN_Full_Stack_Web_Development/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gopalshahni/MERN_Full_Stack_Web_Development.git"
+  },
+  "license": "ISC",
+  "author": "\"Gopal",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js  "
+  },
+  "devDependencies": {
+    "prettier": "3.8.2"
+  }
+}
