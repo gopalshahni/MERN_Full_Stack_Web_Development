@@ -17,8 +17,6 @@ app.use(cookieParser())// used to set and get access of cookies of client browse
 
 // routes 
 app.use('/api/v1/users',UserRouter)
-app.get('/ping', (req, res) => {
-  res.json({ message: 'pong' });
-});
+
 
 export {app}

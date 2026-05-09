@@ -40,17 +40,16 @@ const UserSchema = new Schema({
         type : String,
         required : [true,'Password is required']
     },
-    refershToken : {
+    refreshToken : {
         type : String
     }
 },
 {timestamps: true}
 )
 // password encryption
- UserSchema.pre('save',async function(next){
+ UserSchema.pre('save',async function(){
    if (!this.isModified("password")) return next() 
      this.password = await bcrypt.hash(this.password,10)
-     next()
    
  })// don't use arrow fn coz they don't have their context
  
