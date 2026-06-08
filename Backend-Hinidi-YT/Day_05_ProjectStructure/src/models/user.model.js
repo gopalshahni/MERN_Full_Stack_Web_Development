@@ -2,50 +2,51 @@ import mongoose,{Schema} from "mongoose";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
-const UserSchema = new Schema({
-    username : {
-        type : String,
-        required : true ,
-        unique : true,
-        lowercase : true,
-        trim : true,
-        index : true
+const UserSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+      index: true,
     },
-    email : {
-        type : String,
-        required : true,
-        unique : true,
-        lowercase : true
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
     },
-    fullname : {
-        type : String,
-        required : true,
-        trim : true,
-        index : true
+    fullname: {
+      type: String,
+      required: true,
+      trim: true,
+      index: true,
     },
-    avatar : {
-        type : String,/// cloudinary true 
-        required : true
+    avatar: {
+      url: { type: String, required: true },
+      public_id: { type: String, required: true }, // NEW field
     },
-    coverImage : {
-        type : String,
+    coverImage: {
+      type: String,
     },
-    watchHistory : [
-        {
-            type: Schema.Types.ObjectId,
-            ref : "Video"
-        }
+    watchHistory: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Video',
+      },
     ],
-    password : {
-        type : String,
-        required : [true,'Password is required']
+    password: {
+      type: String,
+      required: [true, 'Password is required'],
     },
-    refreshToken : {
-        type : String
-    }
-},
-{timestamps: true}
-)
+    refreshToken: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
 // password encryption
  UserSchema.pre('save',async function(){
    if (!this.isModified("password")) return next() 
