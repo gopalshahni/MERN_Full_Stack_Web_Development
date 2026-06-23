@@ -38,8 +38,8 @@ const addComment = asyncHandler(async (req, res) => {
   
   const comment = await Comment.create({
     content,
-    video: videoID,
-    user: _id,
+    video: videoId,
+    owner: _id,
   });
 
   return res
@@ -54,7 +54,7 @@ const updateComment = asyncHandler(async (req, res) => {
   const { videoId } = req.params;
   const { content} = req.body;
   const { _id } = req.user;
-  const oldcomment = await Comment.find({owner :_id,video : videoID})
+  const oldcomment = await Comment.findOne({owner :_id,video : videoId})
 
   if (!content) {
     throw new ApiError(400, 'Please give proper comment ');
@@ -62,12 +62,12 @@ const updateComment = asyncHandler(async (req, res) => {
   if (!_id) {
     throw new ApiError(500, 'something went wrong while accessing user id  ');
   }
-  if(oldcomment === content){
+  if(oldcomment && oldcomment.content === content){
     throw new ApiError(400,"Please provide new comment")
   }
   
 const comment = await Comment.findOneAndUpdate(
-  { video: videoID, user: _id }, // filter by multiple fields
+  { video: videoId, owner: _id }, // filter by multiple fields
   { content },
   { new: true }
 );
@@ -87,8 +87,8 @@ const deleteComment = asyncHandler(async (req, res) => {
     throw new ApiError(500, 'something went wrong while accessing user id ')
   }
   const commentdeltion = await Comment.findOneAndDelete({
-    video: videoID,
-    user: _id,
+    video: videoId,
+    owner: _id,
   });
   
   return res
