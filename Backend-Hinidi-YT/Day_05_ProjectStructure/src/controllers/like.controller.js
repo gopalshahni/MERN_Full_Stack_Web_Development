@@ -7,7 +7,11 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 const toggleVideoLike = asyncHandler(async (req, res) => {
   const { videoId } = req.params;
   //TODO: toggle like on video
-});
+  const existedLike = await like.findOne({ video: videoId, likedBy:mongoose.Types.ObjectId(req.user._id)})
+  if(!existedLike){
+    await like.findOneAndDelete({ video: videoId, likedBy:mongoose.Types.ObjectId(req.user._id)})
+  }
+  });
 
 const toggleCommentLike = asyncHandler(async (req, res) => {
   const { commentId } = req.params;
